@@ -12,9 +12,8 @@ RUN echo "Configuring the apk"						&&\
 	apk update 										&&\
 	apk add --update --no-cache git
 
-RUN	go get -u github.com/ohpe/socks-my-vpn
-
-WORKDIR $GOPATH/src/github.com/ohpe/socks-my-vpn
+WORKDIR /opt/socks-ovpn
+COPY . .
 RUN go build -mod=vendor -o /go/bin/socks-my-vpn
 
 
