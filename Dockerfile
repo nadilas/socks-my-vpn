@@ -12,14 +12,10 @@ RUN echo "Configuring the apk"						&&\
 	apk update 										&&\
 	apk add --update --no-cache git
 
-RUN go get github.com/golang/dep					&&\
-	go install github.com/golang/dep/cmd/dep
-
 RUN	go get -u github.com/ohpe/socks-my-vpn
 
 WORKDIR $GOPATH/src/github.com/ohpe/socks-my-vpn
-RUN dep ensure -update -v
-RUN go build -o /go/bin/socks-my-vpn
+RUN go build -mod=vendor -o /go/bin/socks-my-vpn
 
 
 #
