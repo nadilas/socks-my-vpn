@@ -46,7 +46,7 @@ VOLUME ["/vpn"]
 
 ENTRYPOINT [ \
     "/bin/bash", "-c", \
-    "/socks/socks.sh && cd /vpn/ && /usr/sbin/openvpn --config /vpn/*.conf " \
+    "/socks/socks.sh && cd /vpn/ && /usr/sbin/openvpn --config /vpn/*.ovpn " \
 ]
 
 
