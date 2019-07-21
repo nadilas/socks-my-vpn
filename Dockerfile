@@ -32,7 +32,6 @@ RUN echo "Configuring the apk"						&&\
 	chmod a+x /socks/server /socks/socks.sh 		&&\
 	wget -O /etc/openvpn/update-resolv-conf https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh &&\
 	chmod +x /etc/openvpn/update-resolv-conf &&\
-	sysctl net.ipv6.conf.all.disable_ipv6=0 &&\
 	echo "Done."
 
 
@@ -44,7 +43,7 @@ VOLUME ["/vpn"]
 
 ENTRYPOINT [ \
     "/bin/bash", "-c", \
-    "/socks/socks.sh && cd /vpn/ && /usr/sbin/openvpn --config /vpn/*.ovpn " \
+    "sysctl net.ipv6.conf.all.disable_ipv6=0 && /socks/socks.sh && cd /vpn/ && /usr/sbin/openvpn --config /vpn/*.ovpn " \
 ]
 
 
