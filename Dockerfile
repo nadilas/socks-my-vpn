@@ -35,6 +35,8 @@ RUN echo "Configuring the apk"						&&\
 				openvpn bash openresolv curl		&&\
 	rm -rf /tmp/* /var/cache/apk/* 					&&\
 	chmod a+x /socks/server /socks/socks.sh 		&&\
+	wget -O /etc/openvpn/update-resolv-conf https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh &&\
+	chmod +x /etc/openvpn/update-resolv-conf &&\
 	echo "Done."
 
 
